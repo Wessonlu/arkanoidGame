@@ -18,10 +18,16 @@
         }
     }
     var ArkanoidGame = function(opt) {
-        var el = opt.el || document.body
-        if(utils.isElement(el)) {
-            
+        this.opt = opt
+        var wrapEl = this.getWrapEl()
+        console.log(wrapEl)
+    }
+    ArkanoidGame.prototype.getWrapEl = function() {
+        var el = this.opt.el || document.body
+        if(!utils.isString(el)) {
+            el = document.getElementById(el)
         }
+        return el
     }
     w.ArkanoidGame = ArkanoidGame
 }(window)
